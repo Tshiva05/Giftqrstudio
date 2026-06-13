@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO META ═══ -->
+  <title>GiftQR Studio – Turn Photos, Videos & Audio into Surprise QR Gifts</title>
+  <meta name="description" content="Upload a photo, video or audio and instantly create a scannable QR code gift. Perfect for birthdays, anniversaries & special moments. Free & instant.">
+  <meta name="keywords" content="gift QR code, QR gift, photo QR code, video QR gift, surprise gift link, QR code generator, share memories, gift idea">
+  <meta name="author" content="GiftQR Studio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gift-qr-studio.onrender.com/">
+
+  <!-- ═══ OPEN GRAPH (Facebook/WhatsApp previews) ═══ -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gift-qr-studio.onrender.com/">
+  <meta property="og:title" content="GiftQR Studio – Share Memories as QR Surprises">
+  <meta property="og:description" content="Upload a photo, video or audio clip and turn it into a scannable QR gift. Free, fast and magical.">
+  <meta property="og:image" content="https://gift-qr-studio.onrender.com/og-image.png">
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GiftQR Studio – QR Code Gift Generator">
+  <meta name="twitter:description" content="Turn your photos, videos and audio into scannable surprise gifts.">
+  <meta name="twitter:image" content="https://gift-qr-studio.onrender.com/og-image.png">
+
+  <!-- ═══ STRUCTURED DATA (Google Rich Results) ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GiftQR Studio",
+    "url": "https://gift-qr-studio.onrender.com/",
+    "description": "Turn photos, videos and audio into scannable QR code surprise gifts.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- ═══ FONTS & ICONS ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- ═══ FAVICON ═══ -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       HEADER / NAV
+  ══════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-gift">Gift</span><span class="logo-qr">Qr</span>
+        <span class="logo-dot">●</span>
+        <span class="logo-studio">Studio</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#how-it-works">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       AD SLOT — Leaderboard Top (728×90 / 320×50 mobile)
+  ══════════════════════════════════════════ -->
+  <div class="ad-slot ad-leaderboard" aria-label="Advertisement">
+    <!-- Google AdSense: replace data-ad-* values with your own -->
+    <!--
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    
+    
+  
+    <span>Ad · GiftQR Studio</span>
+    
+    -->
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Free · Instant · No account needed</div>
+    <h1 class="hero-title">Turn Memories into<br><span class="gradient-text">QR Surprises</span></h1>
+    <p class="hero-sub">Upload a photo, video or audio clip — get a scannable QR gift link in seconds. Perfect for birthdays, weddings & every moment worth sharing.</p>
+    <a href="#upload-section" class="hero-cta">
+      <i class="fa-solid fa-gift"></i> Create a Gift QR
+    </a>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Media types</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">10s</span><span class="stat-label">To create</span></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       MAIN UPLOAD CARD
+  ══════════════════════════════════════════ -->
+  <main id="upload-section" class="main-wrap">
+    <div class="upload-card">
+
+      <!-- Step indicator -->
+      <div class="steps">
+        <div class="step active" id="step1"><span class="step-num">1</span><span class="step-label">Choose type</span></div>
+        <div class="step-line"></div>
+        <div class="step" id="step2"><span class="step-num">2</span><span class="step-label">Upload</span></div>
+        <div class="step-line"></div>
+        <div class="step" id="step3"><span class="step-num">3</span><span class="step-label">Share</span></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-type="image" role="tab" aria-selected="true">
+          <i class="fa-solid fa-image"></i> Image
+        </button>
+        <button class="tab-btn" data-type="video" role="tab" aria-selected="false">
+          <i class="fa-solid fa-video"></i> Video
+        </button>
+        <button class="tab-btn" data-type="audio" role="tab" aria-selected="false">
+          <i class="fa-solid fa-music"></i> Audio
+        </button>
+      </div>
+
+      <!-- Upload zone -->
+      <div id="upload-area" class="upload-area" role="button" tabindex="0" aria-label="Upload file area">
+        <input type="file" id="file-input" hidden accept="image/*">
+        <div class="upload-content">
+          <div class="upload-icon-wrap">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+          </div>
+          <h3>Drag & Drop or Tap to Upload</h3>
+          <p id="file-type-hint">JPG, PNG, GIF — max 10 MB</p>
+          <span class="upload-btn-label">Browse files</span>
+        </div>
+      </div>
+
+      <!-- Optional Music Upload (shown after image upload succeeds) -->
+      <div id="music-upload-section" class="music-upload-section hidden">
+        <div class="music-upload-header">
+          <span class="music-emoji">🎵</span>
+          <div>
+            <h4>Add background music <span class="optional-badge">Optional</span></h4>
+            <p>Music will auto-play for 30 seconds when your gift is opened</p>
+          </div>
+        </div>
+        <div id="music-drop-area" class="music-drop-area">
+          <input type="file" id="music-input" hidden accept="audio/mpeg,audio/mp3,.mp3">
+          <i class="fa-solid fa-music music-drop-icon"></i>
+          <span id="music-drop-label">Tap to upload MP3</span>
+          <span class="music-drop-hint">MP3 only — max 10 MB</span>
+        </div>
+        <div id="music-selected" class="music-selected hidden">
+          <i class="fa-solid fa-circle-check" style="color:#25C26E"></i>
+          <span id="music-filename">song.mp3</span>
+          <button id="music-remove-btn" title="Remove music" aria-label="Remove music">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="music-actions">
+          <button id="btn-generate-qr" class="btn btn-primary btn-generate">
+            <i class="fa-solid fa-qrcode"></i> Generate QR Code
+          </button>
+          <button id="btn-skip-music" class="btn-skip">
+            Skip — no music
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div id="loading-state" class="loading-state hidden">
+        <div class="gift-loader">
+          <div class="gift-box">
+            <div class="gift-lid"></div>
+            <div class="gift-body"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+          </div>
+        </div>
+        <h3 id="progress-text">Wrapping your gift…</h3>
+        <p>Uploading & generating magic ✨</p>
+        <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
+
+      <!-- Result -->
+      <div id="result-state" class="result-state hidden">
+        <div class="result-header">
+          <div class="success-badge"><i class="fa-solid fa-circle-check"></i></div>
+          <h3>Your Gift QR is Ready! 🎁</h3>
+          <p>Scan or share the link below</p>
+        </div>
+        <div class="qr-frame">
+          <div id="qrcode-container"></div>
+          <div class="qr-corner tl"></div>
+          <div class="qr-corner tr"></div>
+          <div class="qr-corner bl"></div>
+          <div class="qr-corner br"></div>
+        </div>
+        <div class="action-buttons">
+          <button id="btn-download" class="btn btn-primary"><i class="fa-solid fa-download"></i> Download QR</button>
+          <button id="btn-copy" class="btn btn-outline"><i class="fa-solid fa-link"></i> Copy Link</button>
+          <button id="btn-whatsapp" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Share</button>
+        </div>
+        <button id="btn-new" class="btn-new"><i class="fa-solid fa-plus"></i> Create Another Gift</button>
+      </div>
+
+    </div><!-- /upload-card -->
+
+    <!-- ── INLINE AD: Rectangle (300×250) beside card on desktop ── -->
+    <div class="ad-slot ad-rect" aria-label="Advertisement">
+      <!--
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="rectangle"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      
+      <span>Ad</span>
+      
+      
+      -->
+      
+    </div>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════
+       HOW IT WORKS
+  ══════════════════════════════════════════ -->
+  <section class="how-section" id="how-it-works">
+    <div class="section-inner">
+      <p class="section-eyebrow">Simple process</p>
+      <h2 class="section-title">How GiftQR Works</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-icon"><i class="fa-solid fa-upload"></i></div>
+          <h4>Upload Your Memory</h4>
+          <p>Choose a photo, video or audio file from your device. We accept all major formats.</p>
+        </div>
+        <div class="how-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="how-step">
+          <div class="how-icon"><i class="fa-solid fa-qrcode"></i></div>
+          <h4>Get a QR Code</h4>
+          <p>Your file is securely stored and wrapped into a unique, scannable QR code in seconds.</p>
+        </div>
+        <div class="how-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="how-step">
+          <div class="how-icon"><i class="fa-solid fa-share-nodes"></i></div>
+          <h4>Share the Surprise</h4>
+          <p>Print the QR, send the link or share via WhatsApp. The recipient taps to reveal the gift!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       AD SLOT — Mid-page Banner
+  ══════════════════════════════════════════ -->
+  <div class="ad-slot ad-banner-mid" aria-label="Advertisement">
+    <!--
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    
+    <span>Ad · GiftQR Studio</span>
+    
+    -->
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       USE CASES / ENGAGEMENT SECTION
+  ══════════════════════════════════════════ -->
+  <section class="use-section">
+    <div class="section-inner">
+      <p class="section-eyebrow">Ideas</p>
+      <h2 class="section-title">Perfect for Every Occasion</h2>
+      <div class="use-grid">
+        <div class="use-card"><i class="fa-solid fa-cake-candles"></i><h4>Birthdays</h4><p>Send a surprise video message they'll never forget.</p></div>
+        <div class="use-card"><i class="fa-solid fa-heart"></i><h4>Anniversaries</h4><p>Attach a memory photo to a card with a QR code.</p></div>
+        <div class="use-card"><i class="fa-solid fa-graduation-cap"></i><h4>Graduations</h4><p>Celebrate with a personalised audio message.</p></div>
+        <div class="use-card"><i class="fa-solid fa-tree"></i><h4>Holidays</h4><p>Print the QR on gift tags for a digital twist.</p></div>
+        <div class="use-card"><i class="fa-solid fa-champagne-glasses"></i><h4>Weddings</h4><p>Let guests scan table cards to see a surprise video.</p></div>
+        <div class="use-card"><i class="fa-solid fa-star"></i><h4>Any day</h4><p>No reason needed — just a moment worth sharing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-gift">Gift</span><span class="logo-qr">Qr</span><span class="logo-studio"> Studio</span>
+        <p>Turn memories into scannable surprises. Free, instant and magical.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Product</h5>
+        <a href="/#upload-section">Create a Gift QR</a>
+        <a href="/#how-it-works">How it works</a>
+      </div>
+      <div class="footer-links">
+        <h5>Company</h5>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="footer-links">
+        <h5>Share</h5>
+        <a href="https://api.whatsapp.com/send?text=Check%20out%20GiftQR%20Studio!%20https://gift-qr-studio.onrender.com" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://twitter.com/intent/tweet?text=Turn%20memories%20into%20QR%20gifts!&url=https://gift-qr-studio.onrender.com" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> Twitter/X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> GiftQR Studio. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy</a> · <a href="contact.html">Contact</a></p>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

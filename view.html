@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Received a Surprise Gift! 🎁</title>
+  <meta name="description" content="Someone sent you a special gift. Tap to reveal your surprise!">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph for WhatsApp / social previews -->
+  <meta property="og:title" content="🎁 You Have a Surprise Gift!">
+  <meta property="og:description" content="Someone sent you something special. Tap to reveal!">
+  <meta property="og:image" content="https://gift-qr-studio.onrender.com/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+
+  <style>
+    :root {
+      --font: 'Poppins', sans-serif;
+      --pink: #E84393;
+      --purple: #6C48C4;
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: var(--font);
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FF9A9E 0%, #FAD0C4 40%, #FECFEF 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Confetti particles (CSS only) ── */
+    .confetti-wrap {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      top: -20px;
+    }
+    .confetti-piece:nth-child(odd)  { border-radius: 50%; }
+    .confetti-piece:nth-child(even) { border-radius: 2px; }
+
+    /* ── Gift intro screen ── */
+    #gift-intro {
+      text-align: center;
+      padding: 36px 28px;
+      z-index: 10;
+      animation: floatIn .7s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes floatIn {
+      from { opacity:0; transform: scale(.8) translateY(30px); }
+      to   { opacity:1; transform: scale(1) translateY(0); }
+    }
+
+    .gift-icon-big {
+      font-size: 5rem;
+      margin-bottom: 16px;
+      display: block;
+      animation: swing 2s ease-in-out infinite;
+    }
+    @keyframes swing {
+      0%,100% { transform: rotate(-6deg); }
+      50% { transform: rotate(6deg); }
+    }
+
+    #gift-intro h2 {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 14px rgba(0,0,0,.15);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    #gift-intro p {
+      color: rgba(255,255,255,.9);
+      font-size: 1rem;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .reveal-btn {
+      background: linear-gradient(135deg, #ff4757, #E84393);
+      color: #fff;
+      border: none;
+      padding: 18px 52px;
+      font-size: 1.1rem;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(255,71,87,.45);
+      font-family: var(--font);
+      font-weight: 700;
+      transition: all var(--transition);
+      animation: pulse 2s ease-in-out infinite;
+      letter-spacing: .02em;
+    }
+    .reveal-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 16px 40px rgba(255,71,87,.55);
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 12px 32px rgba(255,71,87,.45); }
+      50%      { box-shadow: 0 16px 44px rgba(255,71,87,.65); }
+    }
+
+    .brand-tag {
+      margin-top: 28px;
+      font-size: .78rem;
+      color: rgba(255,255,255,.65);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+    }
+    .brand-tag a { color: rgba(255,255,255,.75); text-decoration: none; font-weight: 600; }
+    .brand-tag a:hover { color: #fff; }
+
+    /* ── Media display ── */
+    #media-display {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      z-index: 10;
+      animation: zoomIn .8s cubic-bezier(.34,1.56,.64,1);
+      max-width: 92vw;
+      max-height: 88vh;
+      background: rgba(255,255,255,.95);
+      padding: 20px;
+      border-radius: 24px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.25);
+      text-align: center;
+    }
+    @keyframes zoomIn {
+      from { opacity:0; transform: scale(.6) translateY(40px); }
+      to   { opacity:1; transform: scale(1) translateY(0); }
+    }
+    #media-display h3 {
+      color: #1A0E2C;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    #media-display img {
+      max-width: 100%;
+      max-height: 62vh;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
+    #media-display video {
+      max-width: 100%;
+      max-height: 62vh;
+      border-radius: 14px;
+    }
+    #media-display audio {
+      width: 100%;
+      max-width: 320px;
+      margin-top: 8px;
+    }
+
+    .media-footer {
+      font-size: .8rem;
+      color: #7B6E91;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .media-footer a { color: var(--purple); text-decoration: none; font-weight: 600; }
+
+    /* ── Error state ── */
+    #error-state {
+      display: none;
+      text-align: center;
+      padding: 32px 28px;
+      z-index: 10;
+      background: rgba(255,255,255,.9);
+      border-radius: 20px;
+      max-width: 340px;
+    }
+    #error-state i { font-size: 3rem; color: #ff4757; margin-bottom: 16px; }
+    #error-state h3 { margin-bottom: 8px; }
+    #error-state p  { color: #7B6E91; font-size: .9rem; line-height: 1.6; }
+    #error-state a  { color: var(--purple); font-weight: 600; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Confetti (filled by JS after reveal) -->
+  <div class="confetti-wrap" id="confettiWrap"></div>
+
+  <!-- Intro screen -->
+  <div id="gift-intro">
+    <span class="gift-icon-big">🎁</span>
+    <h2>You have a<br>surprise gift!</h2>
+    <p>Someone thought of you and sent<br>something special. Are you ready?</p>
+    <button class="reveal-btn" id="open-gift-btn">
+      <i class="fa-solid fa-envelope-open-text"></i>&nbsp; Tap to Reveal
+    </button>
+    <div class="brand-tag">
+      Made with <i class="fa-solid fa-heart" style="color:#ff4757;font-size:.7rem"></i> via
+      <a href="https://gift-qr-studio.onrender.com" target="_blank">GiftQR Studio</a>
+    </div>
+  </div>
+
+  <!-- Media reveal -->
+  <div id="media-display"></div>
+
+  <!-- Error -->
+  <div id="error-state">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    <h3>Oops! Invalid gift link.</h3>
+    <p>This link may have expired or is incorrect. Ask the sender to create a new one at <a href="https://gift-qr-studio.onrender.com">GiftQR Studio</a>.</p>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params       = new URLSearchParams(window.location.search);
+    const type         = params.get('type');
+    const fileUrl      = params.get('file');
+    const musicUrl     = params.get('music');   // optional background music
+    const giftIntro    = document.getElementById('gift-intro');
+    const mediaDisplay = document.getElementById('media-display');
+    const errorState   = document.getElementById('error-state');
+    const openBtn      = document.getElementById('open-gift-btn');
+
+    if (!type || !fileUrl) {
+      giftIntro.style.display = 'none';
+      errorState.style.display = 'block';
+      return;
+    }
+
+    openBtn.addEventListener('click', () => {
+      giftIntro.style.display  = 'none';
+      mediaDisplay.style.display = 'flex';
+
+      // Confetti burst
+      launchConfetti();
+
+      // ── Background music (hidden, auto-stop 30s) ──────────────────────
+      if (musicUrl) {
+        const bgAudio = document.createElement('audio');
+        bgAudio.src      = musicUrl;
+        bgAudio.autoplay = true;
+        bgAudio.loop     = false;
+        bgAudio.style.cssText = 'display:none;position:absolute;width:0;height:0;opacity:0;pointer-events:none;';
+        document.body.appendChild(bgAudio);
+
+        // Try to play (browsers may block autoplay before gesture — click counts as gesture here)
+        const playPromise = bgAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Autoplay blocked — silently ignore, no controls to show
+          });
+        }
+
+        // Auto-stop after 30 seconds
+        setTimeout(() => {
+          bgAudio.pause();
+          bgAudio.currentTime = 0;
+        }, 30000);
+      }
+
+      if (type === 'image') {
+        const label = document.createElement('h3');
+        label.textContent = '🎉 Your surprise photo!';
+        const img = document.createElement('img');
+        img.src = fileUrl;
+        img.alt = 'Surprise gift photo';
+        img.loading = 'lazy';
+        mediaDisplay.appendChild(label);
+        mediaDisplay.appendChild(img);
+      } else if (type === 'video') {
+        const label = document.createElement('h3');
+        label.textContent = '🎬 Your surprise video!';
+        const video = document.createElement('video');
+        video.src      = fileUrl;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        mediaDisplay.appendChild(label);
+        mediaDisplay.appendChild(video);
+      } else if (type === 'audio') {
+        const label = document.createElement('h3');
+        label.textContent = '🎵 Listen to your surprise!';
+        const icon = document.createElement('div');
+        icon.style.cssText = 'font-size:3.5rem;margin:8px 0';
+        icon.textContent = '🎶';
+        const audio = document.createElement('audio');
+        audio.src      = fileUrl;
+        audio.controls = true;
+        audio.autoplay = true;
+        mediaDisplay.appendChild(label);
+        mediaDisplay.appendChild(icon);
+        mediaDisplay.appendChild(audio);
+      }
+
+      // Footer branding
+      const footer = document.createElement('div');
+      footer.className = 'media-footer';
+      footer.innerHTML = `Made with <i class="fa-solid fa-heart" style="color:#ff4757;font-size:.65rem"></i> via <a href="https://gift-qr-studio.onrender.com" target="_blank">GiftQR Studio</a>`;
+      mediaDisplay.appendChild(footer);
+    });
+  });
+
+  // ── CSS confetti burst ───────────────────────────────────────────────────
+  function launchConfetti() {
+    const wrap   = document.getElementById('confettiWrap');
+    const colors = ['#6C48C4','#E84393','#FFD700','#25D366','#FF6B6B','#00CEC9','#FF9A9E','#FFEAA7'];
+    const count  = 80;
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const left  = Math.random() * 100;
+      const size  = Math.random() * 10 + 6;
+      const delay = Math.random() * 0.8;
+      const dur   = Math.random() * 2 + 2;
+      el.style.cssText = `
+        left:${left}vw;
+        width:${size}px; height:${size}px;
+        background:${color};
+        animation: fall ${dur}s ease-in ${delay}s forwards;
+      `;
+      wrap.appendChild(el);
+    }
+    // Inject fall keyframe once
+    if (!document.getElementById('confettiStyle')) {
+      const style = document.createElement('style');
+      style.id = 'confettiStyle';
+      style.textContent = `
+        @keyframes fall {
+          0%   { opacity:1; top:-20px; transform: rotate(0deg) translateX(0); }
+          100% { opacity:0; top:110vh; transform: rotate(${Math.random()*720}deg) translateX(${(Math.random()-0.5)*200}px); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    // Clean up after animation
+    setTimeout(() => wrap.innerHTML = '', 5000);
+  }
+  </script>
+</body>
+</html>

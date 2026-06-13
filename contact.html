@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us – GiftQR Studio</title>
+  <meta name="description" content="Contact the GiftQR Studio team. Report issues, ask questions or send feedback.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gift-qr-studio.onrender.com/contact.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 32px;
+      margin-top: 8px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 16px; }
+    .contact-info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: box-shadow .25s;
+    }
+    .contact-info-card:hover { box-shadow: 0 8px 24px var(--shadow); }
+    .contact-info-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, rgba(108,72,196,.12), rgba(232,67,147,.12));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .contact-info-text h4 { font-size: .9rem; margin-bottom: 3px; }
+    .contact-info-text p  { font-size: .83rem; color: var(--muted); line-height: 1.5; }
+    .contact-info-text a  { color: var(--primary); font-weight: 600; }
+
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+    .form-card h3 { font-size: 1.1rem; margin-bottom: 20px; }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 32px;
+    }
+    .success-msg i { font-size: 3rem; color: var(--success); margin-bottom: 12px; }
+    .success-msg h3 { margin-bottom: 8px; }
+    .success-msg p  { color: var(--muted); font-size: .9rem; }
+
+    @media (max-width: 640px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-gift">Gift</span><span class="logo-qr">Qr</span>
+        <span class="logo-dot">●</span>
+        <span class="logo-studio">Studio</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/#how-it-works">How it works</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html" style="color:var(--primary);">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="/">Home</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <h1><span class="gradient-text">Contact Us</span></h1>
+    <p>Have a question, found a bug, or want to share feedback? We'd love to hear from you.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="page-content">
+    <div class="contact-grid">
+
+      <!-- Info cards -->
+      <div class="contact-info">
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fa-solid fa-clock"></i></div>
+          <div class="contact-info-text">
+            <h4>Response Time</h4>
+            <p>We typically reply within <strong>24–48 hours</strong> on weekdays.</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <div class="contact-info-text">
+            <h4>Quick Share</h4>
+            <p>Love GiftQR Studio? <a href="https://api.whatsapp.com/send?text=Check%20out%20GiftQR%20Studio!%20https://gift-qr-studio.onrender.com" target="_blank" rel="noopener">Share it on WhatsApp</a> with friends.</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fa-solid fa-bug"></i></div>
+          <div class="contact-info-text">
+            <h4>Report a Bug</h4>
+            <p>If something isn't working, use the form and select "Bug Report" so we can fix it fast.</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="contact-info-text">
+            <h4>Content Removal</h4>
+            <p>To request removal of an uploaded file, provide the URL in the message and we'll remove it within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card">
+        <h3>Send us a message</h3>
+
+        <!-- Success message (shown after submit) -->
+        <div class="success-msg" id="successMsg">
+          <i class="fa-solid fa-circle-check"></i>
+          <h3>Message Sent! 🎉</h3>
+          <p>Thank you for reaching out. We'll get back to you within 24–48 hours.</p>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Priya Sharma" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="" disabled selected>Choose a topic…</option>
+              <option value="bug">🐛 Bug Report</option>
+              <option value="feature">💡 Feature Request</option>
+              <option value="content-removal">🗑️ Content Removal Request</option>
+              <option value="adsense">📢 AdSense / Monetisation</option>
+              <option value="partnership">🤝 Partnership</option>
+              <option value="other">💬 Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Describe your question or issue in detail…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+
+    </div><!-- /contact-grid -->
+
+    <!-- FAQ strip -->
+    <div style="margin-top:48px;">
+      <h2 style="text-align:center;margin-bottom:24px;">Frequently Asked Questions</h2>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <details style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;cursor:pointer;">
+          <summary style="font-weight:600;font-size:.95rem;list-style:none;">How long are my uploaded files stored?</summary>
+          <p style="margin-top:10px;color:var(--muted);font-size:.88rem;line-height:1.65;">Files are stored on Cloudinary indefinitely unless you request removal. QR codes do not expire, but if you want a file deleted, contact us with the URL.</p>
+        </details>
+        <details style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;cursor:pointer;">
+          <summary style="font-weight:600;font-size:.95rem;list-style:none;">Is GiftQR Studio really free?</summary>
+          <p style="margin-top:10px;color:var(--muted);font-size:.88rem;line-height:1.65;">Yes, completely free. The service is supported by advertisements. No account or payment is required.</p>
+        </details>
+        <details style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;cursor:pointer;">
+          <summary style="font-weight:600;font-size:.95rem;list-style:none;">Can I upload any file type?</summary>
+          <p style="margin-top:10px;color:var(--muted);font-size:.88rem;line-height:1.65;">We support images (JPG, PNG, GIF, WebP), videos (MP4, WebM, MOV) and audio (MP3, WAV, OGG, M4A). Maximum sizes are 10 MB for images, 50 MB for videos and 20 MB for audio.</p>
+        </details>
+        <details style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;cursor:pointer;">
+          <summary style="font-weight:600;font-size:.95rem;list-style:none;">Who can see my uploaded gift?</summary>
+          <p style="margin-top:10px;color:var(--muted);font-size:.88rem;line-height:1.65;">Anyone with the unique QR link or URL can view the gift. We do not publish a public gallery of uploads. Only share your QR with people you trust.</p>
+        </details>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-gift">Gift</span><span class="logo-qr">Qr</span><span class="logo-studio"> Studio</span>
+        <p>Turn memories into scannable surprises. Free, instant and magical.</p>
+      </div>
+      <div class="footer-links">
+        <h5>Product</h5>
+        <a href="/">Create a Gift QR</a>
+        <a href="/#how-it-works">How it works</a>
+      </div>
+      <div class="footer-links">
+        <h5>Company</h5>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="footer-links">
+        <h5>Share</h5>
+        <a href="https://api.whatsapp.com/send?text=Check%20out%20GiftQR%20Studio!%20https://gift-qr-studio.onrender.com" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://twitter.com/intent/tweet?text=Turn%20memories%20into%20QR%20gifts!&url=https://gift-qr-studio.onrender.com" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> Twitter/X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> GiftQR Studio. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy</a> · <a href="contact.html">Contact</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle  = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+    // Simple client-side form handler
+    // Replace the fetch URL with your preferred form backend (Formspree, EmailJS, etc.)
+    const form       = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+    const submitBtn  = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+      submitBtn.disabled  = true;
+
+      // ── Option A: Use Formspree (free tier) ──
+      // 1. Go to https://formspree.io and create a form
+      // 2. Replace YOUR_FORM_ID below
+      const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+
+      try {
+        const res = await fetch(FORMSPREE_URL, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch {
+        // Fallback: open mailto
+        const name    = document.getElementById('name').value;
+        const email   = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        const mailTo  = `mailto: giftqrstudio@gmail.com?subject=${encodeURIComponent(subject + ' – GiftQR Studio')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+        window.open(mailTo);
+        form.style.display  = 'none';
+        successMsg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
