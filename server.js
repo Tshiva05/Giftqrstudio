@@ -15,7 +15,8 @@ const PORT = process.env.PORT || 3000;
 
 // Enable CORS and serve static frontend files from 'public' directory
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname)));
+
 app.use(express.json());
 
 // Configure Cloudinary
@@ -137,7 +138,7 @@ app.get('/health', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 
